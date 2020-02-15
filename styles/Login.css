@@ -1,12 +1,59 @@
 div.login-box {
-
+    width: 35%;
+    margin-left: 32.5%;
+    height: 60%;
+    margin-top: 10%;
 }
 div.login-form {
-
+    height: 50%;
+    width: 100%;
 }
 input.login-field {
-
+    width: 60%;
+    margin-left: 20%;
+    height: 50px;
+    border-radius: 15px;
+    margin-bottom: 2%;
+    background-color: #ebebeb;
+    outline: none;
+    border: 0px;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 button.login-btn {
-    
+    cursor: pointer;
+    position: relative;
+    display: block;
+    margin: 24px auto;
+    width: 60%;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 15px;
+    background-color: #4287f5;
+    color: #ecf0f1;
+    transition: background-color .3s;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+.login-btn:hover, .login-btn:focus {
+    background-color: #3770cc;
+}
+.login-btn > * {
+    position: relative;
+}
+.login-btn span {
+    display: block;
+    padding: 15px 30px;
+}
+
+img.login-logo {
+    width: 50%;
+    margin-left: 25%;
+    height: 50%;
+    margin-bottom: 10%;
 }
