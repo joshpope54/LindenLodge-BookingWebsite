@@ -5,6 +5,13 @@
         <title>Linden lodge kennels</title>
     </head>
     <body>
-        <p>INSERT A LOGIN PAGE HERE</p>
+        <div class="login-box">
+
+            <div class="login-form">
+                <input type="text" class="login-field"/>
+                <input type="text" class="login-field"/>
+                <button class="login-btn" type="button"><span>Login</span></button>
+            </div>
+        </div>
     </body>
 </html>
