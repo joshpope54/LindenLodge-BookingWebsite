@@ -5,6 +5,9 @@
         <title>Dashboard</title>
     </head>
     <body>
+        <?php
+            require("./Components/Header.php");
+         ?>
         <p>INSERT A Dashboard HERE</p>
     </body>
 </html>
