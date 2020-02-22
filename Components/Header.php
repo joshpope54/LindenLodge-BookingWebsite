@@ -10,7 +10,7 @@
         }
      ?>
      <div class="headerRight">
-         <button class="login-btn" type="button"><span>New booking +</span></button>
+         <button class="login-btn" type="button"><span>New booking</span></button>
          <p class="headerRightText">Your profile</p>
      </div>
 </div>
