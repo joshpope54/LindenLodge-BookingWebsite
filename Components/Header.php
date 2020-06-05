@@ -5,12 +5,14 @@
         $values = array("Dashboard","Bookings","Customers");
         foreach ($values as $key) {
             echo '<div class="headerButton">';
-                echo '<p class="headerButtonText">'. $key .'</p>';
+                echo '<p class="headerButtonText"><a class="headerButtonLink" href="'.$key.'.php">'. $key .'</a></p>';
             echo '</div>';
         }
      ?>
      <div class="headerRight">
-         <button class="login-btn" type="button"><span>New booking</span></button>
-         <p class="headerRightText">Your profile</p>
+       <!-- <form class="headerForm" action="newBooking.php" method="post"> -->
+          <a class="login-btn" type="button" href="newBooking.php"><span>New booking</span></a>
+        <!-- </form> -->
+        <p class="headerRightText">Your profile</p>
      </div>
 </div>

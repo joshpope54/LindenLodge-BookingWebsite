@@ -1,0 +1,182 @@
+div.greeting {
+    width: 100%;
+    margin-top: 20px;
+}
+p.greeting {
+    display:inline-block;
+    font-size: 35px;
+    margin: 0px;
+    margin-left: 12.5%;
+    padding: 0px;
+}
+
+div.container {
+    width: 75%;
+    height: 600px;
+    margin: auto;
+    margin-top: 80px;
+}
+div.bookingBody {
+    height: 88%;
+    width: 100%;
+    overflow-y: auto;
+    margin-top: 1.5%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+    float: right;
+    padding: 0px;
+}
+
+div.bookingForm{
+  display: inline;
+  float:left;
+  width: 70%;
+  height: 90%;
+}
+
+div.bookingSummary{
+  display: inline;
+  height: 100%;
+  float: right;
+  border-left: 1px solid black;
+  width: 29.9%;
+}
+
+p.bookingSummaryTitle {
+    font-size: 25px;
+    margin: auto;
+    padding: 0px;
+    padding-top: 20px;
+    padding-left: 35px;
+}
+div.bookingSummaryHeader {
+    width: 100%;
+    height: 10%;
+    border-bottom: solid 2px black;
+    border-image: linear-gradient(90deg, rgb(0,0,0), rgb(255,255,255)) 1;
+}
+
+p.todaysActivityTitle {
+    font-size: 25px;
+    margin: auto;
+    padding: 0px;
+    padding-top: 20px;
+    padding-left: 35px;
+}
+
+div.todayActivityHeader {
+  float: left;
+  display: inline;
+    width: 70%;
+    height: 10%;
+}
+
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #2c3e50;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"] {
+    appearance: none;
+    width: 30%;
+    -webkit-appearance: none;
+    color: black;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border:1px solid #ecf0f1;
+    background:#ecf0f1;
+    padding:5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+input[type="date"], focus {
+    color: black;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 30%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5%;
+  margin-right: 40%;
+  float: right;
+}
+
+form.bookingForm{
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.col-25 {
+  float: left;
+  margin-left: 5%;
+  width: 20%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 70%;
+  margin-right: 5%;
+  margin-top: 6px;
+}
+
+.row {
+  margin-top: 2.5%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}

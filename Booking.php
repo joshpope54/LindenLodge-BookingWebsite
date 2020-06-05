@@ -5,6 +5,10 @@
         <title>Booking</title>
     </head>
     <body>
-        <p>INSERT A Booking HERE</p>
+      <?php
+        if (!empty($_GET['id'])) {
+          echo "Insert booking for " . $_GET["id"];
+        }
+      ?>
     </body>
 </html>

@@ -17,6 +17,17 @@ div.headerButton {
     float: left;
     margin-left: 25px;
 }
+
+a.headerButtonLink:link, a.headerButtonLink:visited {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+form.headerForm {
+  display: inline;
+}
 p.headerButtonText {
     color: white;
     font-size: 18px;
@@ -25,11 +36,13 @@ p.headerButtonText {
 div.headerRight {
     float: right;
 }
-button.login-btn {
+a.login-btn {
     float: left;
     cursor: pointer;
     position: relative;
     display: block;
+    text-align: center;
+    text-decoration: none;
     margin: 5px;
     margin-top: 12px;
     width: 175px;
