@@ -1,7 +1,8 @@
 body {
-    padding-top: 60px;
-    background-color: #f6f4f4;
-    font-family: 'Roboto', sans-serif;
+  background-color: #f6f4f4;
+  font-family: 'Roboto', sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
 p {
     font-family: 'Roboto', sans-serif;
@@ -9,9 +10,46 @@ p {
 div.header {
     width: 100%;
     background: #333230;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+}
+
+.pageContent{
+  margin-top:5%;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container{
+  margin: auto;
+  width: 1170px;
+}
+
+.column{
+  width: 50%;
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.column:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+
+.container:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.header:after {
+  content: "";
+  clear: both;
+  display: block;
 }
 div.headerButton {
     float: left;

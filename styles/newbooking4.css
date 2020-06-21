@@ -1,0 +1,255 @@
+
+
+.bookingContainer{
+  background-color: white;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+  width: 100%;
+  padding: 5%;
+}
+
+.bookingType{
+  text-align: center;
+}
+
+.bookingType input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.kennels{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+.cattery{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+.grooming{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+
+.bookingType input:active +.drinkcard-cc{opacity: .9;}
+.bookingType input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+.itemRow{
+  margin-top: 5%;
+
+}
+
+.leftSideItem{
+  width: 25%;
+  padding-top: 2.5%;
+  display: inline;
+  float: left;
+}
+
+.rightSideItem{
+  width: 75%;
+  display: inline;
+  float: left;
+}
+
+.itemRow#available{
+  height: 25%;
+}
+
+#availableTrue{
+  opacity: 0.5;
+  background-color: #4CAF50;
+}
+
+#availableFalse{
+  opacity: 0.5;
+  background-color: red;
+}
+
+.availabilityContainer{
+  margin: auto;
+  text-align:center;
+  width: 100%;
+  height: 150px;
+  border-radius: 15px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+}
+
+#withLiveSearch{
+  position: relative;
+}
+
+.livesearch{
+  width: 100%;
+  top: 44px;
+  position: absolute;
+  z-index: 999;
+}
+.livesearch p{
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px solid #CCCCCC;
+    background: white;
+    border-top: none;
+    cursor: pointer;
+}
+.livesearch p:hover{
+    background: #f2f2f2;
+}
+
+.addedPet{
+  display: inline-block;
+  background-color: #4CAF50;
+  border-radius: 10px;
+  padding: 2%;
+  margin-top: 4%;
+  margin-right: 4%;
+  cursor: pointer;
+}
+
+.itemRow:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+
+
+
+input[type=text], select, input[type=date] {
+  box-sizing:border-box;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.costsHeading{
+  font-size: 35px;
+}
+
+.costDetailsContainer{
+  margin-top: 5%;
+  width: 100%;
+  background-color: #f6f4f4;
+  border-radius: 15px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+}
+
+.costDetailsRow{
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 95%;
+  border-bottom: 1px dotted black;
+}
+
+.costDetailsRow#lastRow{
+  border: 0;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 4%;
+}
+
+.costDetailsRow:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.costDetailsRowAlways{
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 95%;
+  border-bottom: 1px dotted black;
+}
+
+.costDetailsRowAlways#last{
+  border: 0;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 4%;
+}
+
+.costDetailsRowAlways:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.costDetailsDetail{
+  display: inline-block;
+  padding-left: 2%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+
+.costDetailsDetail#beRight{
+  float:right !important;
+}
+
+.addAdditionalCost{
+  margin-top: 5%;
+  width: 100%;
+  background-color: #a4c400;
+  border-radius: 15px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+}
+
+.additionalCostDetails{
+  display: inline-block;
+  padding: 3%;
+}
+
+.book{
+  margin-top: 5%;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.book:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.costDetailsContainer:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
+}

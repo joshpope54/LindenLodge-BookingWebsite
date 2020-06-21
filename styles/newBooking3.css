@@ -1,38 +1,86 @@
-div.container {
-    width: 75%;
-    height: 100%;
-    margin: auto;
-    margin-top: 30px;
-    max-width: 1200px;
-}
-div.upperSectionContainer {
-    width:40%;
-    overflow-y: auto;
-    margin: auto;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
-    padding: 0px;
+.formContainer{
+  width: 60%;
+  margin: auto;
 }
 
-form{
-  height: auto;
+.upperContainer{
+  width: 80%;
+  margin: auto;
 }
 
-div.upperBody{
-  background-color: #f6f4f4;
-  display: inline;
-  height: 100%;
-  width: 100%;
-  float:left;
+.bookingStepsHeader input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.kennels{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+.cattery{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+.grooming{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+
+.bookingStepsHeader input:active +.drinkcard-cc{opacity: .9;}
+.bookingStepsHeader input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:50px;height:25px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+::after ::before{
+  box-sizing: border-box;
+}
+
+.bookingStepsHeader{
+  text-align: center;
+  margin: auto;
 }
 
 input[type=radio]{
   display: inline;
 }
 
+.lowerContainer{
+  width: 100%;
+  margin: auto;
+
+}
+
 .rightSideColumn#withLiveSearch{
   position: relative;
+}
+
+.dates{
+  display: inline
+}
+
+.availableText{
+  text-align: center;
+}
+
+.datesRow{
+  text-align: center;
+}
+
+.datesLabel{
+  margin-left: 2.5%;
+  display: inline;
 }
 
 .livesearch{
@@ -52,10 +100,6 @@ input[type=radio]{
     background: #f2f2f2;
 }
 
-div.bookingStepsHeader{
-  padding: 10%;
-}
-
 div.lowerSectionContainer {
     width: 100%;
     height: auto;
@@ -72,15 +116,39 @@ div.lowerSectionContainer {
 div.lowerBody{
   background-color: white;
   height: auto;
+  border-radius: 20px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+  width: 100%;
+}
+
+div.container{
+  margin: auto;
+}
+
+div.bookingDetailsContainer{
+  width: 50%;
+}
+
+div.bookingCostsDetails{
+  width: 50%;
+}
+
+div.detailsBody{
+  background-color: white;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
   width: 100%;
 }
 
 .row#insouts{
   height: 20%;
+  padding-top: 5%;
 }
 
 .row#available{
   height: 25%;
+  padding-top: 4%;
 }
 
 .row#bigRow{
@@ -89,10 +157,36 @@ div.lowerBody{
 
 .row#buttons{
   height: 20%;
+  padding-bottom: 5%;
+}
+
+#availableTrue{
+  opacity: 0.5;
+  background-color: #4CAF50;
+}
+
+#availableFalse{
+  opacity: 0.5;
+  background-color: red;
+}
+
+.row{
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .leftSide#insouts{
   position: relative;
+}
+
+.addedPet{
+  display: inline-block;
+  background-color: #4CAF50;
+  border-radius: 10px;
+  padding: 2%;
+  margin-top: 4%;
+  margin-right: 4%;
+  cursor: pointer;
 }
 
 .leftSide{
@@ -161,24 +255,23 @@ input[type=submit] {
   border: none;
   border-radius: 4px;
   margin-top:2%;
-  margin-right: 5%;
+  margin-right: 2.5%;
+
   cursor: pointer;
+
   float: right;
 }
 
 div.availabilityContainer{
   margin: auto;
-  opacity: 0.5;
-  background-color: #4CAF50;
+  text-align:center;
   width: 60%;
   height: 150px;
   border-radius: 15px;
   box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
+
 
 .containerRow:after {
   content: "";

@@ -1,6 +1,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./styles/Header.css">
 <div class="header">
+  <div class="container">
     <?php
         $values = array("Dashboard","Bookings","Customers");
         foreach ($values as $key) {
@@ -11,8 +12,9 @@
      ?>
      <div class="headerRight">
        <!-- <form class="headerForm" action="newBooking.php" method="post"> -->
-          <a class="login-btn" type="button" href="newBooking.php"><span>New booking</span></a>
+          <a class="login-btn" type="button" href="newBooking2.php"><span>New booking</span></a>
         <!-- </form> -->
         <p class="headerRightText">Your profile</p>
      </div>
+   </div>
 </div>

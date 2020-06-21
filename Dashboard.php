@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title>Dashboard</title>
-        <link rel="stylesheet" type="text/css" href="./styles/Dash.css">
+        <link rel="stylesheet" type="text/css" href="./styles/dash2.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
           function updateType(bookingID, type, clickedButton){
             $.ajax({
-                url: "http://localhost:8081/api/v1/bookings/"+bookingID+"/"+type,
+                url: "http://192.168.0.7:8081/api/v1/bookings/"+bookingID+"/"+type,
                 type : "POST",
                 crossDomain: true,
                 success: function(result){
@@ -20,76 +20,74 @@
     </head>
 
     <body>
-        <?php
-            require("./Components/Header.php");
-            $webAddress = 'http://localhost:8081/api/v1';
-            $date = date("Y-m-d");
-            if(!empty($_GET["date"])){
-              $givenDate = $_GET["date"];
-              $tommorow = strtotime("+1 day", strtotime($givenDate));
-              $yesterday = strtotime("-1 day", strtotime($givenDate));
+      <?php require("./Components/Header.php");
+      $webAddress = 'http://192.168.0.7:8081/api/v1';
+      $date = date("Y-m-d");
+      if(!empty($_GET["date"])){
+        $givenDate = $_GET["date"];
+        $tommorow = strtotime("+1 day", strtotime($givenDate));
+        $yesterday = strtotime("-1 day", strtotime($givenDate));
+      }else{
+        $givenDate = $date;
+        $tommorow = strtotime("+1 day", strtotime($date));
+        $yesterday = strtotime("-1 day", strtotime($date));
+      }
+
+      function createTableRow($item, $webAddress){
+        global $date, $givenDate;
+        echo "<tr>";
+        echo "<td>". $item["type"] . "</td>";
+        $customer = file_get_contents($webAddress.'/customers/'.$item["customerId"]);
+        $customer = json_decode($customer, true);
+        echo "<td>". $customer["firstName"] . " " . $customer["lastName"] . "</td>";
+        echo "<td>";
+        for ($i = 0; $i <= count($item["animals"])-1; $i++) {
+          echo "<button class='animalContainer'><span>".$item["animals"]["".$i.""]["name"]."</span></button>";
+        }
+
+        $booking_start_date = strtotime($item["startDate"]);
+        $end_date = strtotime($item["endDate"]);
+        echo "</td>";
+        echo "<td>". $item["room"]["name"] . "</td>";
+
+
+        if($givenDate == $date){
+          if($item["startDate"] == $date){
+            if($item["arrived"]=="WAITING ARRIVAL"){
+              echo "<td><button onclick='updateType(".$item["id"].", 1, this)' class='checkin-btn' type='button'><span>Check in</span></button></td>";
             }else{
-              $givenDate = $date;
-              $tommorow = strtotime("+1 day", strtotime($date));
-              $yesterday = strtotime("-1 day", strtotime($date));
+              echo "<td><button onclick='updateType(".$item["id"].", 3, this)' class='checked-btn' type='button'><span>Checked In</span></button></td>";
             }
-
-            function createTableRow($item, $webAddress){
-              global $date, $givenDate;
-              echo "<tr>";
-              echo "<td><a class='viewBooking' href='Booking.php?id=".$item["id"]."'>View Booking</a></td>";
-              echo "<td>". $item["type"] . "</td>";
-              $customer = file_get_contents($webAddress.'/customers/'.$item["customerId"]);
-              $customer = json_decode($customer, true);
-              echo "<td>". $customer["firstName"] . " " . $customer["lastName"] . "</td>";
-              echo "<td>";
-              for ($i = 0; $i <= count($item["animals"])-1; $i++) {
-                if($i == 0){
-                  echo $item["animals"]["".$i.""]["name"];
-                }else if($i==count($item["animals"])-1){
-                  echo " and ".$item["animals"]["".$i.""]["name"];
-                }else{
-                  echo ", " . $item["animals"]["".$i.""]["name"];
-                }
-              }
-              $booking_start_date = strtotime($item["startDate"]);
-              $end_date = strtotime($item["endDate"]);
-              echo " for ". ($end_date - $booking_start_date)/60/60/24 ." days</td>";
-
-              if($givenDate == $date){
-                if($item["startDate"] == $date){
-                  if($item["arrived"]=="WAITING ARRIVAL"){
-                    echo "<td align='center'><button onclick='updateType(".$item["id"].", 1, this)' class='checkin-btn' type='button'><span>Check in</span></button></td>";
-                  }else{
-                    echo "<td align='center'><button onclick='updateType(".$item["id"].", 3, this)' class='checked-btn' type='button'><span>Checked In</span></button></td>";
-                  }
-                }else if ($item["endDate"] = $date){
-                  if($item["arrived"]=="CHECKED IN"){
-                    echo "<td align='center'><button onclick='updateType(".$item["id"].", 2, this)' class='checkout-btn' type='button'><span>Check out</span></button></td>";
-                  }else{
-                    echo "<td align='center'><button onclick='updateType(".$item["id"].", 1, this)' class='checked-btn' type='button'><span>Checked out</span></button></td>";
-                  }
-                }
-              }else{
-                if(strtotime($item["startDate"]) == strtotime($givenDate)){
-                  if (strtotime($item["startDate"]) < strtotime($date)){
-                    echo "<td align='center'><button class='nottodays-btn' type='button'><span>Checked in</span></button></td>";
-                  }else{
-                    echo "<td align='center'><button class='nottodays-btn' type='button'><span>Check in</span></button></td>";
-                  }
-                }else if (strtotime($item["endDate"]) == strtotime($givenDate)){
-                  if (strtotime($item["endDate"]) < strtotime($date)){
-                    echo "<td align='center'><button class='nottodays-btn' type='button'><span>Checked out</span></button></td>";
-                  }else{
-                    echo "<td align='center'><button class='nottodays-btn' type='button'><span>Check out</span></button></td>";
-                  }
-                }
-              }
-              echo "</tr>";
+          }else if ($item["endDate"] = $date){
+            if($item["arrived"]=="CHECKED IN"){
+              echo "<td><button onclick='updateType(".$item["id"].", 2, this)' class='checkout-btn' type='button'><span>Check out</span></button></td>";
+            }else{
+              echo "<td><button onclick='updateType(".$item["id"].", 1, this)' class='checked-btn' type='button'><span>Checked out</span></button></td>";
             }
-         ?>
-         <div class="greeting">
-             <p class="greeting"><?php
+          }
+        }else{
+          if(strtotime($item["startDate"]) == strtotime($givenDate)){
+            if (strtotime($item["startDate"]) < strtotime($date)){
+              echo "<td><button class='nottodays-btn' type='button'><span>Checked in</span></button></td>";
+            }else{
+              echo "<td><button class='nottodays-btn' type='button'><span>Check in</span></button></td>";
+            }
+          }else if (strtotime($item["endDate"]) == strtotime($givenDate)){
+            if (strtotime($item["endDate"]) < strtotime($date)){
+              echo "<td><button class='nottodays-btn' type='button'><span>Checked out</span></button></td>";
+            }else{
+              echo "<td><button class='nottodays-btn' type='button'><span>Check out</span></button></td>";
+            }
+          }
+        }
+        echo "</tr>";
+      }
+      ?>
+
+
+         <div class = "container">
+           <div class="dateContainer">
+             <?php
               if(empty($_GET["date"])){
                 echo "Today's Dashboard";
               }else{
@@ -104,24 +102,222 @@
                   echo $givenDate . "'s Dashboard";
                 }
               }
-             ?></p>
-             <p class="dateSelector" float='right'><a class="dateSelectorLink"<?php
-                if($yesterday==strtotime($date)){
-                  echo "href = Dashboard.php";
-                }else{
-                  echo "href = Dashboard.php?date=". date("Y-m-d", $yesterday);
-                }
-              ?>><</a>
+             ?>
+           </div>
+           <div class="column">
+             <div class="smallContainer">
+              <span class="smallHeadings">Ins ()</span>
+              <div class="tableContainer">
+                <table class="actions">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Customer</th>
+                      <th>Animals</th>
+                      <th>Room</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                      if(!empty($_GET["date"])){
+                        $response = file_get_contents($webAddress.'/bookings/date/'.$givenDate);
+                        $response = json_decode($response, true);
+                      }else{
+                        $response = file_get_contents($webAddress.'/bookings/today');
+                        $response = json_decode($response, true);
+                      }
+                      foreach($response as $item) { //foreach element in $arr
+                        if($item["startDate"] == $givenDate){
+                          createTableRow($item, $webAddress);
+                        }
+                      }
+                   ?>
+                 </tbody>
+                 </table>
+              </div>
+             </div>
+           </div>
+           <div class="column">
+             <div class="smallContainer">
+              <span class="smallHeadings">Outs ()</span>
+              <div class="tableContainer">
+                <table class="actions">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Customer</th>
+                      <th>Animals</th>
+                      <th>Room</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                      if(!empty($_GET["date"])){
+                        $response = file_get_contents($webAddress.'/bookings/date/'.$givenDate);
+                        $response = json_decode($response, true);
+                      }else{
+                        $response = file_get_contents($webAddress.'/bookings/today');
+                        $response = json_decode($response, true);
+                      }
+                      foreach($response as $item) { //foreach element in $arr
+                        if($item["endDate"] == $givenDate){
+                          createTableRow($item, $webAddress);
+                        }
+                      }
+                   ?>
+                 </tbody>
+                 </table>
+              </div>
 
-             <a class="dateSelectorLink" <?php
-                if($tommorow==strtotime($date)){
-                  echo "href = Dashboard.php";
-                }else{
-                  echo "href = Dashboard.php?date=". date("Y-m-d", $tommorow);
-                }
-             ?>>></a></p>
+             </div>
+           </div>
+
          </div>
-        <div class="upperInfo">
+         <div class="container">
+           <div class="bottomColumn">
+             <div class="bottomContainer">
+               <span class="smallHeadings">Current Occupants</span>
+               <div class="tableContainer">
+               <table class="actions">
+                 <thead>
+                   <tr>
+                       <th>Service</th>
+                       <th>Customer</th>
+                       <th>Room</th>
+                       <th>Booking Details</th>
+                       <th>Days remaining</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <?php
+                       $currentBookings = file_get_contents($webAddress.'/bookings/current');
+                       $currentBookings = json_decode($currentBookings, true);
+                       //this is an array
+                       foreach($currentBookings as $item) { //foreach element in $arr
+                         echo "<tr>";
+                         echo "<td>".$item["type"]."</td>";
+                         $customer = file_get_contents($webAddress.'/customers/'.$item["customerId"]);
+                         $customer = json_decode($customer, true);
+                         echo "<td>". $customer["firstName"] . " " . $customer["lastName"] . "</td>";
+                         echo "<td>". $item["room"]["name"] . "</td>";
+                         $booking_start_date = strtotime($item["startDate"]);
+                         $end_date = strtotime($item["endDate"]);
+                         echo "<td>";
+                         for ($i = 0; $i <= count($item["animals"])-1; $i++) {
+                           if($i == 0){
+                             echo $item["animals"]["".$i.""]["name"];
+                           }else if($i==count($item["animals"])-1){
+                             echo " and ".$item["animals"]["".$i.""]["name"];
+                           }else{
+                             echo ", " . $item["animals"]["".$i.""]["name"];
+                           }
+                         }
+
+                         echo " for ". ($end_date - $booking_start_date)/60/60/24 ." days</td>";
+                         $start_date = strtotime($date);
+                         echo "<td>". ($end_date - $start_date)/60/60/24 ."</td>";
+                         echo "</tr>";
+                       }
+                    ?>
+                  </tbody>
+               </table>
+              </div>
+             </div>
+           </div>
+         </div>
+
+
+
+
+
+         <!-- ?php
+
+             $date = date("Y-m-d");
+             if(!empty($_GET["date"])){
+               $givenDate = $_GET["date"];
+               $tommorow = strtotime("+1 day", strtotime($givenDate));
+               $yesterday = strtotime("-1 day", strtotime($givenDate));
+             }else{
+               $givenDate = $date;
+               $tommorow = strtotime("+1 day", strtotime($date));
+               $yesterday = strtotime("-1 day", strtotime($date));
+             }
+
+             function createTableRow($item, $webAddress){
+               global $date, $givenDate;
+               echo "<tr>";
+               echo "<td><a class='viewBooking' href='Booking.php?id=".$item["id"]."'>View Booking</a></td>";
+               echo "<td>". $item["type"] . "</td>";
+               $customer = file_get_contents($webAddress.'/customers/'.$item["customerId"]);
+               $customer = json_decode($customer, true);
+               echo "<td>". $customer["firstName"] . " " . $customer["lastName"] . "</td>";
+               echo "<td>";
+               for ($i = 0; $i <= count($item["animals"])-1; $i++) {
+                 if($i == 0){
+                   echo $item["animals"]["".$i.""]["name"];
+                 }else if($i==count($item["animals"])-1){
+                   echo " and ".$item["animals"]["".$i.""]["name"];
+                 }else{
+                   echo ", " . $item["animals"]["".$i.""]["name"];
+                 }
+               }
+               $booking_start_date = strtotime($item["startDate"]);
+               $end_date = strtotime($item["endDate"]);
+               echo " for ". ($end_date - $booking_start_date)/60/60/24 ." days</td>";
+
+               if($givenDate == $date){
+                 if($item["startDate"] == $date){
+                   if($item["arrived"]=="WAITING ARRIVAL"){
+                     echo "<td align='center'><button onclick='updateType(".$item["id"].", 1, this)' class='checkin-btn' type='button'><span>Check in</span></button></td>";
+                   }else{
+                     echo "<td align='center'><button onclick='updateType(".$item["id"].", 3, this)' class='checked-btn' type='button'><span>Checked In</span></button></td>";
+                   }
+                 }else if ($item["endDate"] = $date){
+                   if($item["arrived"]=="CHECKED IN"){
+                     echo "<td align='center'><button onclick='updateType(".$item["id"].", 2, this)' class='checkout-btn' type='button'><span>Check out</span></button></td>";
+                   }else{
+                     echo "<td align='center'><button onclick='updateType(".$item["id"].", 1, this)' class='checked-btn' type='button'><span>Checked out</span></button></td>";
+                   }
+                 }
+               }else{
+                 if(strtotime($item["startDate"]) == strtotime($givenDate)){
+                   if (strtotime($item["startDate"]) < strtotime($date)){
+                     echo "<td align='center'><button class='nottodays-btn' type='button'><span>Checked in</span></button></td>";
+                   }else{
+                     echo "<td align='center'><button class='nottodays-btn' type='button'><span>Check in</span></button></td>";
+                   }
+                 }else if (strtotime($item["endDate"]) == strtotime($givenDate)){
+                   if (strtotime($item["endDate"]) < strtotime($date)){
+                     echo "<td align='center'><button class='nottodays-btn' type='button'><span>Checked out</span></button></td>";
+                   }else{
+                     echo "<td align='center'><button class='nottodays-btn' type='button'><span>Check out</span></button></td>";
+                   }
+                 }
+               }
+               echo "</tr>";
+             }
+          ?>
+          <div class="greeting">
+              <p class="greeting"></p>
+              <p class="dateSelector" float='right'><a class="dateSelectorLink"<?php
+                 if($yesterday==strtotime($date)){
+                   echo "href = Dashboard.php";
+                 }else{
+                   echo "href = Dashboard.php?date=". date("Y-m-d", $yesterday);
+                 }
+               ?>><</a>
+
+              <a class="dateSelectorLink" <?php
+                 if($tommorow==strtotime($date)){
+                   echo "href = Dashboard.php";
+                 }else{
+                   echo "href = Dashboard.php?date=". date("Y-m-d", $tommorow);
+                 }
+              ?>>></a></p>
+          </div> -->
+        <!-- <div class="upperInfo">
             <div class="todayActivityHolderIns">
                 <div class="todayActivityHeaderIns">
                     <p class="todaysActivityTitle">Ins</p>
@@ -247,6 +443,6 @@
                 </table>
               </div>
           </div>
-        </div>
+        </div> -->
     </body>
 </html>

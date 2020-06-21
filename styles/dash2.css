@@ -1,0 +1,181 @@
+.smallContainer{
+  background-color: white;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+  width: 100%;
+  padding: 5%;
+}
+
+.smallHeadings{
+  font-size: 25px;
+}
+
+.dateContainer{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 35px;
+}
+
+.tableContainer{
+  margin-top: 5%;
+  font-size: 13px;
+}
+
+table.actions {
+    width: 100%;
+    border-collapse:collapse;
+    border-spacing: 0;
+}
+
+tr:nth-child(even) {
+    background: #ededed;
+}
+
+table.actions + tr {
+    table-layout:fixed;
+    margin-bottom: 10px;
+}
+table.actions th {
+    background-color: white;
+    border-bottom: solid 2px black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 8px;
+}
+table.actions td{
+    font-family: 'Roboto', sans-serif;
+    padding: 8px;
+    word-wrap: break-word
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.animalContainer{
+  text-align: center;
+  background-color: green;
+}
+
+button.checked-btn {
+    display: inline-block;
+    cursor: pointer;
+    width: 95px;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 5px;
+    background-color: #fb00ff;
+    color: #ffffff;
+    transition: background-color .3s;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.checked-btn:hover {
+    background-color: #8d008f;
+}
+
+.checked-btn span {
+    display: block;
+    padding: 5px 5px;
+}
+button.checkin-btn {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    width: 95px;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 5px;
+    background-color: #5bc058;
+    color: #ffffff;
+    transition: background-color .3s;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+}
+.checkin-btn:hover {
+    background-color: #4ea44c;
+}
+
+.checkin-btn span {
+    display: block;
+    padding: 5px 5px;
+}
+
+button.nottodays-btn {
+    position: relative;
+    display: inline-block;
+    width: 95px;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 5px;
+    background-color: #9e9e9e;
+    color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.nottodays-btn > * {
+    position: relative;
+}
+.nottodays-btn span {
+    display: block;
+    padding: 5px 5px;
+}
+
+button.checkout-btn {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 95px;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 5px;
+    background-color: #ff0000;
+    color: #ffffff;
+    transition: background-color .3s;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+}
+.checkout-btn:hover {
+    background-color: #800000;
+}
+.checkout-btn > * {
+    position: relative;
+}
+.checkout-btn span {
+    display: block;
+    padding: 5px 5px;
+}
+
+.bottomColumn{
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.bottomContainer{
+  margin-top: 5%;
+  height: 500px;
+  padding: 2.5%;
+  background-color:white;
+  border-radius: 20px;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
+}
