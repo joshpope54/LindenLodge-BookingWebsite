@@ -1,4 +1,6 @@
-
+.pageContent{
+  margin-top:0%;
+}
 
 .bookingContainer{
   background-color: white;
@@ -50,7 +52,6 @@
 
 .itemRow{
   margin-top: 5%;
-
 }
 
 .leftSideItem{
@@ -126,9 +127,6 @@
   clear: both;
   display: block;
 }
-
-
-
 
 input[type=text], select, input[type=date] {
   box-sizing:border-box;

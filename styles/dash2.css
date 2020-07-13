@@ -1,6 +1,7 @@
 .smallContainer{
   background-color: white;
   height: auto;
+  min-height: 300px;
   border-radius: 20px;
   box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.37);
   width: 100%;
@@ -15,9 +16,25 @@
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 2%;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
   font-size: 35px;
 }
+
+.arrowContainer{
+    cursor: pointer;
+    float: right;
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.arrowContainer:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
 
 .tableContainer{
   margin-top: 5%;
@@ -38,6 +55,11 @@ table.actions + tr {
     table-layout:fixed;
     margin-bottom: 10px;
 }
+
+thead{
+    text-align: left;
+}
+
 table.actions th {
     background-color: white;
     border-bottom: solid 2px black;
@@ -48,7 +70,12 @@ table.actions th {
 table.actions td{
     font-family: 'Roboto', sans-serif;
     padding: 8px;
-    word-wrap: break-word
+    word-wrap: break-word;
+}
+
+#editIcon{
+    width: 25px;
+    height: 25px;
 }
 
 tbody {
