@@ -1,4 +1,4 @@
 # LindenLodge-BookingWebsite
-- Barcode scanner on phone app
-- Main database -> stores customers of the business
-- Secondary databases with customer numbers as database names -> stores customer kennel information
+
+- This site provides the front end for the user
+- Allows them to view Daily bookings, Add new bookings and View all customers/bookings
